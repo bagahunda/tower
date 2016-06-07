@@ -1,0 +1,1 @@
+console.log('Its worked. Im from mainjs');

@@ -1,0 +1,7 @@
+mixin header()
+  .svg-sprite
+    include ../sprite/sprite.svg
+  +b.header&attributes(attributes)
+    h3 Hello from header again
+    svg.icon
+      use(xlink:href="#logo")
