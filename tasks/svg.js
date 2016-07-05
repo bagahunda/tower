@@ -7,18 +7,18 @@ module.exports = function(options) {
   return function() {
     return gulp
       .src(options.src)
-      .pipe($.svgSprite({
-        mode: {
-          inline: true,
-          symbol: {
-              dest: '.',
-              sprite: 'sprite.svg'
-          }
-        },
-        shape: {
-          id: {separator: '-'}
-        }
+      .pipe($.svgmin())
+      .pipe($.svgstore({
+        inlineSvg: true
       }))
+      .pipe($.cheerio({
+        run: function ($) {
+          $('[fill]').removeAttr('fill');
+          $('[style]').removeAttr('style');
+        },
+        parserOptions: { xmlMode: true }
+      }))
+      // .pipe($.replace('&gt;', '>'))
       .pipe(gulp.dest(options.dist))
   };
 };
