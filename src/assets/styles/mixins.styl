@@ -1,9 +1,9 @@
-// Cut long text with elleipsis, works only for one line of text
+// Cut long text with ellipsis, works only for one line of text
 @mixin text-ellipsis
   overflow hidden
   white-space nowrap
   text-overflow ellipsis
-  
+
 @mixin reset-input
   border 0
   padding 0
@@ -11,8 +11,8 @@
   outline none
   background none
   border none
-  
-// Apply this to the parent containet that has n inline-block childrens.
+
+// Apply this to the parent container that has an inline-block childrens.
 justify()
   font-size 1px
   line-height 0
@@ -40,11 +40,11 @@ justify()
 justify-child(font-size = 16px)
   display inline-block
   vertical-align top
-  
+
   font-size font-size
   line-height normal
-  
-// Запрет выделения текста
+
+// Deny text selection
 noselection()
   user-select none
   -webkit-touch-callout none
@@ -59,6 +59,6 @@ placeholder-color(color)
   &::-moz-placeholder
     color color
     opacity 1
-    
+
   &::-webkit-input-placeholder
     color color
