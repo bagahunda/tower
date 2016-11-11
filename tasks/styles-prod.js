@@ -11,6 +11,7 @@ module.exports = function(options) {
   return function() {
     return gulp
       .src(options.src)
+      .pipe($.plumber())
       .pipe($.stylus({
         use: [rupture(), poststylus(['lost', autoprefixer()])]
       }))

@@ -10,6 +10,7 @@ module.exports = function(options) {
   return function() {
     return gulp
       .src(options.src)
+      .pipe($.plumber())
       .pipe($.jadeInheritance({
         basedir: '/src/templates'
       }))
