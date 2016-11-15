@@ -19,6 +19,15 @@ module.exports = function(plop) {
         type: 'add',
         path: './src/templates/blocks/{{snakeCase name}}/{{snakeCase name}}.jade',
         templateFile: 'plop-templates/block.jade'
+      },
+      {
+        type: 'add',
+        path: './src/templates/blocks/{{snakeCase name}}/{{snakeCase name}}.styl',
+        templateFile: 'plop-templates/block-styles.styl'
+      },
+      {
+        type: 'add',
+        path: './src/templates/blocks/{{snakeCase name}}/{{snakeCase name}}.js'
       }
     ]
   });
