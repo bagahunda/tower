@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "gulp": "./node_modules/.bin/gulp",
+    "add": "./node_modules/.bin/plop",
     "start": "gulp dev",
     "prod": "gulp prod",
     "validate": "gulp validate"
@@ -45,6 +46,7 @@
     "gulp-w3cjs": "^1.2.0",
     "gulp-zip": "^3.2.0",
     "lost": "^6.8.0",
+    "plop": "^1.6.0",
     "postcss": "^5.0.21",
     "poststylus": "^0.2.3",
     "rupture": "^0.6.1"
