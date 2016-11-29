@@ -6,6 +6,7 @@ const poststylus   = require('poststylus');
 const lost         = require('lost');
 const rupture      = require('rupture');
 const autoprefixer = require('autoprefixer')
+const cssnano      = require('cssnano');
 
 module.exports = function(options) {
   return function() {
@@ -16,6 +17,7 @@ module.exports = function(options) {
       .pipe($.stylus({
         use: [rupture(), poststylus(['lost', autoprefixer()])]
       }))
+      .pipe($.postcss([cssnano()]))
       .pipe($.sourcemaps.write('.'))
       .pipe(gulp.dest('./dist/assets/styles'))
   };
