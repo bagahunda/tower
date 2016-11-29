@@ -17,8 +17,8 @@ module.exports = function(plop) {
     actions: [
       {
         type: 'add',
-        path: './src/templates/blocks/{{snakeCase name}}/{{snakeCase name}}.jade',
-        templateFile: 'plop-templates/block.jade'
+        path: './src/templates/blocks/{{snakeCase name}}/{{snakeCase name}}.pug',
+        templateFile: 'plop-templates/block.pug'
       },
       {
         type: 'add',
@@ -50,8 +50,8 @@ module.exports = function(plop) {
     actions: [
       {
         type: 'add',
-        path: './src/templates/pages/{{snakeCase name}}.jade',
-        templateFile: 'plop-templates/page.jade'
+        path: './src/templates/pages/{{snakeCase name}}.pug',
+        templateFile: 'plop-templates/page.pug'
       }
     ]
   })

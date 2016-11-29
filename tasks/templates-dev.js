@@ -11,15 +11,7 @@ module.exports = function(options) {
     return gulp
       .src(options.src)
       .pipe($.plumber())
-      .pipe($.jadeInheritance({
-        basedir: '/src/templates'
-      }))
-      .pipe($.filter(
-        function(file) {
-          return /[\\\/]pages/.test(file.path);
-        }
-      ))
-      .pipe($.jade({
+      .pipe($.pug({
         data: data,
         pretty: true
       }))

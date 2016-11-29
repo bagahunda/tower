@@ -11,7 +11,7 @@ module.exports = function(options) {
     return gulp
       .src(options.src)
       .pipe($.plumber())
-      .pipe($.jade({
+      .pipe($.pug({
         data: data,
         pretty: true
       }))

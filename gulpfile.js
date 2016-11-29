@@ -33,11 +33,11 @@ requireTask('scripts:prod', './tasks/scripts-prod', {
 });
 
 requireTask('templates:dev', './tasks/templates-dev', {
-  src: './src/templates/**/*.jade'
+  src: './src/templates/pages/*.pug'
 });
 
 requireTask('templates:prod', './tasks/templates-prod', {
-  src: './src/templates/pages/*.jade'
+  src: './src/templates/pages/*.pug'
 });
 
 requireTask('images', './tasks/images', {
@@ -49,11 +49,11 @@ requireTask('fonts', './tasks/fonts', {
 });
 
 requireTask('zip', './tasks/zip', {
-  dist: './dist/builds'
+  dist: './builds'
 });
 
 requireTask('clean', './tasks/clean', {
-  dist: './dist'
+  dist: ['./dist', './builds']
 });
 
 requireTask('serve', './tasks/serve', {
@@ -67,7 +67,7 @@ requireTask('validate', './tasks/validate', {
 gulp.task('watch', function() {
   gulp.watch(['./src/assets/styles/*.styl', './src/templates/blocks/**/*.styl'], gulp.series('styles:dev'));
   gulp.watch(['./src/assets/scripts/*.js', './src/templates/blocks/**/*.js'], gulp.series('scripts:dev'));
-  gulp.watch('./src/templates/**/*.jade', gulp.series('templates:dev'));
+  gulp.watch('./src/templates/**/*.pug', gulp.series('templates:dev'));
   gulp.watch('./src/assets/images/svg/*.svg', gulp.series('svg'));
   gulp.watch('./src/assets/images/*.{png,jpg}', gulp.series('images'));
   gulp.watch('./src/assets/fonts/**/*', gulp.series('fonts'));
@@ -90,4 +90,3 @@ gulp.task('build:prod', gulp.series(
 gulp.task('prod', gulp.series(
   'build:prod', 'zip')
 );
-

@@ -1,5 +1,3 @@
-include ../../../node_modules/bemto.jade/bemto
-- set_bemto_settings({ modifier: '--' })
 
 include ../blocks/scripts/scripts
 
@@ -11,7 +9,7 @@ html(lang='ru')
   include ../blocks/head/head
   body
     +header()
-    block content
+    h1 New page
     +footer()
     block scripts
     +scripts(['build.js'])
