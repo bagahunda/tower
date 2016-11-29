@@ -8,6 +8,7 @@ module.exports = function(options) {
     return gulp
       .src(options.src)
       .pipe($.plumber())
+      .pipe($.babel())
       .pipe($.concat('temp.js'))
       .pipe($.rename('build.js'))
       .pipe($.uglify())

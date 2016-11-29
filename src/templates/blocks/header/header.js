@@ -1,1 +1,2 @@
-console.log('Im writing from header');
+const message = "I'm writing from header";
+console.info(message);

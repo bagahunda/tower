@@ -1,1 +1,9 @@
-console.log('Its worked. Im from mainjs');
+(function ($) {
+
+  $('document').ready(function() {
+
+    
+
+  });
+
+})(jQuery);
