@@ -68,7 +68,7 @@ gulp.task('watch', function() {
   gulp.watch(['./src/assets/styles/*.styl', './src/templates/blocks/**/*.styl'], gulp.series('styles:dev'));
   gulp.watch(['./src/assets/scripts/*.js', './src/templates/blocks/**/*.js'], gulp.series('scripts:dev'));
   gulp.watch('./src/templates/**/*.pug', gulp.series('templates:dev'));
-  gulp.watch('./src/assets/images/svg/*.svg', gulp.series('svg'));
+  gulp.watch('./src/assets/images/svg/*.svg', gulp.series('svg', 'templates:dev'));
   gulp.watch('./src/assets/images/*.{png,jpg}', gulp.series('images'));
   gulp.watch('./src/assets/fonts/**/*', gulp.series('fonts'));
 })

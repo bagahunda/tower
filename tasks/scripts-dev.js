@@ -8,7 +8,9 @@ module.exports = function(options) {
     return gulp
       .src(options.src)
       .pipe($.plumber())
-      .pipe($.babel())
+      .pipe($.babel({
+        presets: ['es2015']
+      }))
       .pipe($.sourcemaps.init())
       .pipe($.concat('temp.js'))
       .pipe($.rename('build.js'))
