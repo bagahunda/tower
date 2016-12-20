@@ -1,8 +1,15 @@
 
-include ../blocks/scripts/scripts
+include ../bemto/bemto.pug
 
 include ../blocks/header/header
 include ../blocks/footer/footer
+include ../blocks/scripts/scripts
+
+set_bemto_settings({
+  prefix: '',
+  element: '__',
+  modifier: '--'
+})
 
 doctype html
 html(lang='ru')
