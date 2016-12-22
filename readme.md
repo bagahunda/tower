@@ -87,3 +87,32 @@
 - Читаемость (сперва будет непривычно, но спустя время – это будет казаться очень даже удобным)
 - Большое количество учебных материалов
 Для еще большего ускорения верстки в проекте подключены миксины [`bemto`](https://github.com/kizu/bemto), существенно облегчающие использование методологии БЭМ. Попробуйте - вам понравится.
+
+.main-apps {
+  position: relative;
+  width: 100%;
+  height: 488px;
+  padding: 175px 0 550px;
+  background: url("../img/bg-back-mobile@1x.jpg");
+  background-size: cover;
+
+  @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+    background: url("../img/bg-back-mobile@2x.jpg 2x");
+  }
+
+  @media (min-width: 700px) {
+    background: url("../img/bg-back-tablet@1x.jpg 2x");
+  }
+
+  @media (min-width: 700px) and (min-resolution: 144dpi), (min-width: 700px) and (min-resolution: 1.5dppx) {
+    background: url("../img/bg-back-tablet@2x.jpg 2x");
+  }
+
+  @media (min-width: 960px) {
+    background: url("../img/bg-back-desktop@1x.jpg 2x");
+  }
+
+  @media (min-width: 960px) and (min-resolution: 144dpi), (min-width: 700px) and (min-resolution: 1.5dppx) {
+    background: url("../img/bg-back-desktop@2x.jpg 2x");
+  }
+}
