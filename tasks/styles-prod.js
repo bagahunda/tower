@@ -15,10 +15,7 @@ module.exports = function(options) {
       .pipe($.stylus({
         use: [rupture(), poststylus(['lost', autoprefixer()])]
       }))
-      .pipe($.csso())
-      // .pipe($.rev())
+      .pipe($.postcss([cssnano()]))
       .pipe(gulp.dest('./dist/assets/styles'))
-      // .pipe($.rev.manifest('css.json'))
-      // .pipe(gulp.dest('manifest'))
   };
 };
