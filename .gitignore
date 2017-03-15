@@ -40,3 +40,5 @@ bower_components
 # Node.JS
 node_modules
 npm-debug.log
+
+.vscode/
