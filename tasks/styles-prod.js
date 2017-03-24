@@ -6,6 +6,7 @@ const poststylus   = require('poststylus');
 const lost         = require('lost');
 const rupture      = require('rupture');
 const autoprefixer = require('autoprefixer')
+const cssnano      = require('cssnano');
 
 module.exports = function(options) {
   return function() {
