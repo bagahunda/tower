@@ -1,2 +1,3 @@
-const message = "I'm writing from header";
-console.info(message);
+export default function(message) {
+  console.log(message)
+}

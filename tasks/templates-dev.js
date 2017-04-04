@@ -1,21 +1,24 @@
 const gulp = require('gulp');
+const fs   = require('fs');
 const $    = require('gulp-load-plugins')();
 
-const data = {
-  jv0: 'jacascript:void(0);',
-  timestamp: +Date.now()
-};
 
 module.exports = function(options) {
   return function() {
+    // let assets = require('../manifest/webpack.json');
+    // let data = {
+    //   jv0: 'jacascript:void(0);',
+    //   timestamp: +Date.now(),
+    //   assets: assets
+    // };
+    // const dataFile = './manifest/webpack.json'
     return gulp
       .src(options.src)
       .pipe($.plumber())
       .pipe($.pug({
-        data: data,
         pretty: true
       }))
-      .pipe( $.rename({dirname: '.'}) )
+      // .pipe( $.rename({dirname: '.'}) )
       .pipe(gulp.dest('./dist'))
   };
 };
