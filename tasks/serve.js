@@ -9,6 +9,7 @@ module.exports = function(options) {
 
     browserSync.init({
       server: options.src,
+      plugins: ['bs-fullscreen-message'],
       browser: "google chrome",
         files: [
         'dist/assets/styles/*.css',
