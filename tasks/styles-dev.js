@@ -7,13 +7,12 @@ const lost         = require('lost');
 const rupture      = require('rupture');
 const autoprefixer = require('autoprefixer')
 const cssnano      = require('cssnano');
-const bsError      = require('./errors.js')
 
 module.exports = function(options) {
   return function() {
     return gulp
       .src(options.src)
-      .pipe($.plumber(bsError))
+      .pipe($.plumber())
       .pipe($.sourcemaps.init())
       .pipe($.stylus({
         use: [rupture(), poststylus(['lost', autoprefixer()])]
