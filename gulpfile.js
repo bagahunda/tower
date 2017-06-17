@@ -38,7 +38,7 @@ requireTask('scripts:prod', './tasks/scripts-prod', {
 });
 
 requireTask('templates:dev', './tasks/templates-dev', {
-  src: './src/templates/pages/*.pug'
+  src: './src/templates/**/*.pug'
 });
 
 requireTask('templates:prod', './tasks/templates-prod', {
@@ -70,7 +70,7 @@ requireTask('validate', './tasks/validate', {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(['./src/assets/styles/*.styl', './src/templates/blocks/**/*.styl'], gulp.series('styles:dev'));
+  gulp.watch(['./src/assets/styles/*.styl', './src/templates/_blocks/**/*.styl'], gulp.series('styles:dev'));
   // gulp.watch(['./src/assets/scripts/*.js', './src/templates/blocks/**/*.js'], gulp.series('scripts:dev'));
   gulp.watch('./src/templates/**/*.pug', gulp.series('templates:dev'));
   gulp.watch('./src/assets/images/svg/*.svg', gulp.series('svg', 'templates:dev'));

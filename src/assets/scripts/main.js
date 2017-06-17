@@ -1,5 +1,5 @@
 import jQuery from 'jquery'
-import notify from '../../templates/blocks/header/header'
+import notify from '../../templates/_blocks/header/header'
 
 (function ($) {
 

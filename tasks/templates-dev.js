@@ -5,20 +5,19 @@ const $    = require('gulp-load-plugins')();
 
 module.exports = function(options) {
   return function() {
-    // let assets = require('../manifest/webpack.json');
-    // let data = {
-    //   jv0: 'jacascript:void(0);',
-    //   timestamp: +Date.now(),
-    //   assets: assets
-    // };
-    // const dataFile = './manifest/webpack.json'
     return gulp
       .src(options.src)
+      .pipe($.changed('dist', {extension: '.html'}))
+      .pipe($.cached('pug'))
+      .pipe($.pugInheritance({basedir: 'src/templates', skip: 'node_modules'}))
+      .pipe($.filter(function (file) {
+        return !/\/_/.test(file.path) && !/^_/.test(file.relative);
+      }))
       .pipe($.plumber())
       .pipe($.pug({
         pretty: true
       }))
-      // .pipe( $.rename({dirname: '.'}) )
+      .pipe($.rename({dirname: ''}))
       .pipe(gulp.dest('./dist'))
   };
 };

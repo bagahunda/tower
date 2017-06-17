@@ -1,9 +1,9 @@
 
-include ../bemto/bemto.pug
+include ../_bemto/bemto.pug
 
-include ../blocks/header/header
-include ../blocks/footer/footer
-include ../blocks/scripts/scripts
+include ../_blocks/header/header
+include ../_blocks/footer/footer
+include ../_blocks/scripts/scripts
 
 -
   set_bemto_settings({
@@ -14,10 +14,10 @@ include ../blocks/scripts/scripts
 
 doctype html
 html(lang='ru')
-  include ../blocks/head/head
+  include ../_blocks/head/head
   body
     +header()
-    h1 New index with webpack!!!
+    h1 New index with webpack!
     +footer()
     block scripts
     +scripts(['build.js'])
