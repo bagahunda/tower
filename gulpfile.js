@@ -1,11 +1,15 @@
 'use strict'
 
-const gulp = require('gulp');
+global.$ = {
+  gulp: require('gulp'),
+  browserSync: require('browser-sync').create(),
+  gp: require('gulp-load-plugins')()
+}
 
 function requireTask(taskName, path, options) {
   options = options || {};
   options.taskName = taskName;
-  gulp.task(taskName, function(callback) {
+  $.gulp.task(taskName, function(callback) {
     let task = require(path).call(this, options);
     return task(callback);
   });
@@ -64,29 +68,38 @@ requireTask('validate', './tasks/validate', {
   src: './dist/*.html'
 });
 
-gulp.task('watch', function() {
-  gulp.watch(['./src/assets/styles/*.styl', './src/templates/blocks/**/*.styl'], gulp.series('styles:dev'));
-  gulp.watch(['./src/assets/scripts/*.js', './src/templates/blocks/**/*.js'], gulp.series('scripts:dev'));
-  gulp.watch('./src/templates/**/*.pug', gulp.series('templates:dev'));
-  gulp.watch('./src/assets/images/svg/*.svg', gulp.series('svg', 'templates:dev'));
-  gulp.watch('./src/assets/images/*.{png,jpg}', gulp.series('images'));
-  gulp.watch('./src/assets/fonts/**/*', gulp.series('fonts'));
+// $.gulp.task('serve1', function() {
+//   $.browserSync.init({
+//     server: './dist',
+//     browser: "google chrome"
+//   });
+//   $.gulp.watch(['./src/assets/styles/*.styl', './src/templates/blocks/**/*.styl'], $.gulp.series('styles:dev'));
+//   $.gulp.watch('./src/templates/**/*.pug', $.gulp.series('templates:dev'));
+// })
+
+$.gulp.task('watch', function() {
+  $.gulp.watch(['./src/assets/styles/*.styl', './src/templates/blocks/**/*.styl'], $.gulp.series('styles:dev'));
+  $.gulp.watch(['./src/assets/scripts/*.js', './src/templates/blocks/**/*.js'], $.gulp.series('scripts:dev'));
+  $.gulp.watch('./src/templates/**/*.pug', $.gulp.series('templates:dev'));
+  $.gulp.watch('./src/assets/images/svg/*.svg', $.gulp.series('svg', 'templates:dev'));
+  $.gulp.watch('./src/assets/images/*.{png,jpg}', $.gulp.series('images'));
+  $.gulp.watch('./src/assets/fonts/**/*', $.gulp.series('fonts'));
 })
 
-gulp.task('build:dev', gulp.series(
+$.gulp.task('build:dev', $.gulp.series(
   'clean',
-  gulp.parallel('styles:dev', 'scripts:dev', 'templates:dev', 'svg', 'images', 'fonts'))
+  $.gulp.parallel('styles:dev', 'scripts:dev', 'templates:dev', 'svg', 'images', 'fonts'))
 );
 
-gulp.task('dev', gulp.series(
-  'build:dev', gulp.parallel('watch', 'serve'))
+$.gulp.task('dev', $.gulp.series(
+  'build:dev', $.gulp.parallel('watch', 'serve'))
 );
 
-gulp.task('build:prod', gulp.series(
+$.gulp.task('build:prod', $.gulp.series(
   'clean',
-  gulp.parallel('styles:prod', 'scripts:prod', 'templates:prod', 'svg', 'images', 'fonts'))
+  $.gulp.parallel('styles:prod', 'scripts:prod', 'templates:prod', 'svg', 'images', 'fonts'))
 );
 
-gulp.task('prod', gulp.series(
+$.gulp.task('prod', $.gulp.series(
   'build:prod', 'zip')
 );

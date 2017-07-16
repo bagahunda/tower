@@ -1,21 +1,18 @@
 'use strict'
 
-const $            = require('gulp-load-plugins')();
-const gulp         = require('gulp');
-
 module.exports = function(options) {
   return function() {
-    return gulp
+    return $.gulp
       .src(options.src)
-      .pipe($.plumber())
-      .pipe($.babel({
+      .pipe($.gp.plumber())
+      .pipe($.gp.babel({
         presets: ['es2015']
       }))
-      .pipe($.sourcemaps.init())
-      .pipe($.concat('temp.js'))
-      .pipe($.rename('build.js'))
-      .pipe($.uglify())
-      .pipe($.sourcemaps.write('.'))
-      .pipe(gulp.dest('./dist/assets/scripts'))
+      .pipe($.gp.sourcemaps.init())
+      .pipe($.gp.concat('temp.js'))
+      .pipe($.gp.rename('build.js'))
+      .pipe($.gp.uglify())
+      .pipe($.gp.sourcemaps.write('.'))
+      .pipe($.gulp.dest('./dist/assets/scripts'))
   };
 };

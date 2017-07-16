@@ -1,5 +1,4 @@
-const gulp = require('gulp');
-const $    = require('gulp-load-plugins')();
+'use strict'
 
 const data = {
   jv0: 'jacascript:void(0);',
@@ -8,14 +7,15 @@ const data = {
 
 module.exports = function(options) {
   return function() {
-    return gulp
+    return $.gulp
       .src(options.src)
-      .pipe($.plumber())
-      .pipe($.pug({
+      .pipe($.gp.plumber())
+      .pipe($.gp.pug({
         data: data,
         pretty: true
       }))
-      .pipe( $.rename({dirname: '.'}) )
-      .pipe(gulp.dest('./dist'))
+      .pipe( $.gp.rename({dirname: '.'}) )
+      .pipe($.gulp.dest('./dist'))
+      .on('end', $.browserSync.reload)
   };
 };

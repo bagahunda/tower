@@ -1,18 +1,15 @@
 'use strict'
 
-const $            = require('gulp-load-plugins')();
-const gulp         = require('gulp');
-
 module.exports = function(options) {
   return function() {
-    return gulp
+    return $.gulp
       .src(options.src)
-      .pipe($.plumber())
-      .pipe($.svgmin())
-      .pipe($.svgstore({
+      .pipe($.gp.plumber())
+      .pipe($.gp.svgmin())
+      .pipe($.gp.svgstore({
         inlineSvg: true
       }))
-      .pipe($.cheerio({
+      .pipe($.gp.cheerio({
         run: function ($) {
           $('[fill]').removeAttr('fill');
           $('[style]').removeAttr('style');
@@ -20,6 +17,6 @@ module.exports = function(options) {
         parserOptions: { xmlMode: true }
       }))
       // .pipe($.replace('&gt;', '>'))
-      .pipe(gulp.dest(options.dist))
+      .pipe($.gulp.dest(options.dist))
   };
 };
