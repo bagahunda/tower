@@ -14,7 +14,7 @@ module.exports = function(options) {
     }
 
     let today = dd + '_' + mm + '_' + yyyy + '_' + hh + '-' + min;
-    return gulp
+    return $.gulp
       .src('./dist/**/*')
       .pipe($.gp.zip('Build-' + today + '.zip'))
       .pipe($.gulp.dest(options.dist))

@@ -10,4 +10,6 @@ module.exports = function(options) {
     });
   };
 
+  browserSync.watch(`${options.src}/assets/**/*.*`).on('change', browserSync.reload);
+
 };

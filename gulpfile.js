@@ -52,6 +52,15 @@ requireTask('fonts', './tasks/fonts', {
   src: './src/assets/fonts/**/*'
 });
 
+requireTask('generate-favicons', './tasks/generate-favicons', {
+  src: './src/assets/images/favicon_src.png',
+  dest: './src/assets/images/favicons'
+});
+
+requireTask('favicons', './tasks/favicons', {
+  src: './src/assets/images/favicons/favicon.*'
+});
+
 requireTask('zip', './tasks/zip', {
   dist: './builds'
 });
@@ -68,21 +77,13 @@ requireTask('validate', './tasks/validate', {
   src: './dist/*.html'
 });
 
-// $.gulp.task('serve1', function() {
-//   $.browserSync.init({
-//     server: './dist',
-//     browser: "google chrome"
-//   });
-//   $.gulp.watch(['./src/assets/styles/*.styl', './src/templates/blocks/**/*.styl'], $.gulp.series('styles:dev'));
-//   $.gulp.watch('./src/templates/**/*.pug', $.gulp.series('templates:dev'));
-// })
-
 $.gulp.task('watch', function() {
   $.gulp.watch(['./src/assets/styles/*.styl', './src/templates/blocks/**/*.styl'], $.gulp.series('styles:dev'));
   $.gulp.watch(['./src/assets/scripts/*.js', './src/templates/blocks/**/*.js'], $.gulp.series('scripts:dev'));
   $.gulp.watch('./src/templates/**/*.pug', $.gulp.series('templates:dev'));
   $.gulp.watch('./src/assets/images/svg/*.svg', $.gulp.series('svg', 'templates:dev'));
   $.gulp.watch('./src/assets/images/*.{png,jpg}', $.gulp.series('images'));
+  $.gulp.watch('./src/assets/images/favicons/favicon.*', $.gulp.series('generate-favicons', 'favicons'));
   $.gulp.watch('./src/assets/fonts/**/*', $.gulp.series('fonts'));
 })
 
