@@ -89,7 +89,7 @@ $.gulp.task('watch', function() {
 
 $.gulp.task('build:dev', $.gulp.series(
   'clean',
-  $.gulp.parallel('styles:dev', 'scripts:dev', 'templates:dev', 'svg', 'images', 'favicons', 'fonts', 'attachments'))
+  $.gulp.parallel('styles:dev', 'scripts:dev', 'templates:dev', 'svg', 'images', 'favicons', 'fonts'))
 );
 
 $.gulp.task('dev', $.gulp.series(
@@ -98,7 +98,7 @@ $.gulp.task('dev', $.gulp.series(
 
 $.gulp.task('build:prod', $.gulp.series(
   'clean',
-  $.gulp.parallel('styles:prod', 'scripts:prod', 'templates:prod', 'svg', 'images', 'favicons', 'fonts', 'attachments'))
+  $.gulp.parallel('styles:prod', 'scripts:prod', 'templates:prod', 'svg', 'images', 'favicons', 'fonts'))
 );
 
 $.gulp.task('prod', $.gulp.series(
