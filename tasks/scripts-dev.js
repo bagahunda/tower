@@ -14,5 +14,6 @@ module.exports = function(options) {
       .pipe($.gp.uglify())
       .pipe($.gp.sourcemaps.write('.'))
       .pipe($.gulp.dest('./dist/assets/scripts'))
+      .pipe($.browserSync.stream())
   };
 };

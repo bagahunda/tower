@@ -18,5 +18,6 @@ module.exports = function(options) {
       .pipe($.gp.postcss([cssnano()]))
       .pipe($.gp.sourcemaps.write('.'))
       .pipe($.gulp.dest('./dist/assets/styles'))
+      .pipe($.browserSync.stream())
   };
 };

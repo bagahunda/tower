@@ -58,7 +58,7 @@ requireTask('generate-favicons', './tasks/generate-favicons', {
 });
 
 requireTask('favicons', './tasks/favicons', {
-  src: './src/assets/images/favicons/favicon.*'
+  src: './src/assets/images/favicons/**/*'
 });
 
 requireTask('zip', './tasks/zip', {
@@ -83,7 +83,7 @@ $.gulp.task('watch', function() {
   $.gulp.watch('./src/templates/**/*.pug', $.gulp.series('templates:dev'));
   $.gulp.watch('./src/assets/images/svg/*.svg', $.gulp.series('svg', 'templates:dev'));
   $.gulp.watch('./src/assets/images/*.{png,jpg}', $.gulp.series('images'));
-  $.gulp.watch('./src/assets/images/favicons/favicon.*', $.gulp.series('generate-favicons', 'favicons'));
+  $.gulp.watch('./src/assets/images/favicons/*.*', $.gulp.series('favicons'));
   $.gulp.watch('./src/assets/fonts/**/*', $.gulp.series('fonts'));
 })
 

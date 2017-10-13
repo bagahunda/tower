@@ -6,10 +6,7 @@ module.exports = function(options) {
 
     $.browserSync.init({
       server: options.src,
-      browser: "google chrome"
+      open: false
     });
   };
-
-  browserSync.watch(`${options.src}/assets/**/*.*`).on('change', browserSync.reload);
-
 };

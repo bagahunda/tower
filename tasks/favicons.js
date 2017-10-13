@@ -3,8 +3,7 @@
 module.exports = function(options) {
   return function() {
     return $.gulp
-      .src(options.src)
-      .pipe($.gp.size({gzip: true, showFiles: true}))
-      .pipe($.gulp.dest('./dist'))
+      .src(options.src, {since: $.gulp.lastRun(options.taskName)})
+      .pipe($.gulp.dest('./dist'));
   };
 };
