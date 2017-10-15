@@ -1,7 +1,5 @@
 'use strict'
 
-const $            = require('gulp-load-plugins')();
-const gulp         = require('gulp');
 const poststylus   = require('poststylus');
 const lost         = require('lost');
 const rupture      = require('rupture');
@@ -10,15 +8,16 @@ const cssnano      = require('cssnano');
 
 module.exports = function(options) {
   return function() {
-    return gulp
+    return $.gulp
       .src(options.src)
-      .pipe($.plumber())
-      .pipe($.sourcemaps.init())
-      .pipe($.stylus({
+      .pipe($.gp.plumber())
+      .pipe($.gp.sourcemaps.init())
+      .pipe($.gp.stylus({
         use: [rupture(), poststylus(['lost', autoprefixer()])]
       }))
-      .pipe($.postcss([cssnano()]))
-      .pipe($.sourcemaps.write('.'))
-      .pipe(gulp.dest('./dist/assets/styles'))
+      .pipe($.gp.postcss([cssnano()]))
+      .pipe($.gp.sourcemaps.write('.'))
+      .pipe($.gulp.dest('./dist/assets/styles'))
+      .pipe($.browserSync.stream())
   };
 };

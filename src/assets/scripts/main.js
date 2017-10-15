@@ -7,7 +7,7 @@ import notify from '../../templates/_blocks/header/header'
 
     console.log('Hello from main js with shiny webpack modular system!');
 
-    notify("Modules works!!! I'm from Headers.js!")
+    notify("Modules works! I'm from Headers.js!")
 
   });
 

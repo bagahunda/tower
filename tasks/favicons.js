@@ -4,7 +4,6 @@ module.exports = function(options) {
   return function() {
     return $.gulp
       .src(options.src, {since: $.gulp.lastRun(options.taskName)})
-      .pipe($.gp.imagemin())
-      .pipe($.gulp.dest('./dist/assets/images'));
+      .pipe($.gulp.dest('./dist'));
   };
 };

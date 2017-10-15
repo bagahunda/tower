@@ -1,23 +1,21 @@
-const gulp = require('gulp');
-const fs   = require('fs');
-const $    = require('gulp-load-plugins')();
+'use strict'
 
+const data = {
+  jv0: 'jacascript:void(0);',
+  timestamp: +Date.now()
+};
 
 module.exports = function(options) {
   return function() {
-    return gulp
+    return $.gulp
       .src(options.src)
-      .pipe($.changed('dist', {extension: '.html'}))
-      .pipe($.cached('pug'))
-      .pipe($.pugInheritance({basedir: 'src/templates', skip: 'node_modules'}))
-      .pipe($.filter(function (file) {
-        return !/\/_/.test(file.path) && !/^_/.test(file.relative);
-      }))
-      .pipe($.plumber())
-      .pipe($.pug({
+      .pipe($.gp.plumber())
+      .pipe($.gp.pug({
+        data: data,
         pretty: true
       }))
-      .pipe($.rename({dirname: ''}))
-      .pipe(gulp.dest('./dist'))
+      .pipe( $.gp.rename({dirname: '.'}) )
+      .pipe($.gulp.dest('./dist'))
+      .on('end', $.browserSync.reload)
   };
 };

@@ -1,3 +1,3 @@
 export default function(message) {
-  console.log(message)
+  console.info(message + '!')
 }
