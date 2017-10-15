@@ -12,6 +12,7 @@ module.exports = function(options) {
       .src(options.src)
       .pipe(webpackStream(webpackConfig), webpack)
       .pipe(gulp.dest('./dist/assets/scripts'))
+      .pipe($.browserSync.stream())
   }
 
 }
