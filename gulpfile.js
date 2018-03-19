@@ -48,6 +48,10 @@ requireTask('images', './tasks/images', {
   src: './src/assets/images/*.{png,jpg}'
 });
 
+requireTask('uploads', './tasks/uploads', {
+  src: './src/assets/uploads/**/*'
+});
+
 requireTask('fonts', './tasks/fonts', {
   src: './src/assets/fonts/**/*'
 });
@@ -83,13 +87,14 @@ $.gulp.task('watch', function() {
   $.gulp.watch('./src/templates/**/*.pug', $.gulp.series('templates:dev'));
   $.gulp.watch('./src/assets/images/svg/*.svg', $.gulp.series('svg', 'templates:dev'));
   $.gulp.watch('./src/assets/images/*.{png,jpg}', $.gulp.series('images'));
+  $.gulp.watch('./src/assets/uploads/**/*', $.gulp.series('uploads'));
   $.gulp.watch('./src/assets/images/favicons/*.*', $.gulp.series('favicons'));
   $.gulp.watch('./src/assets/fonts/**/*', $.gulp.series('fonts'));
 })
 
 $.gulp.task('build:dev', $.gulp.series(
   'clean',
-  $.gulp.parallel('styles:dev', 'scripts:dev', 'templates:dev', 'svg', 'images', 'favicons', 'fonts'))
+  $.gulp.parallel('styles:dev', 'scripts:dev', 'templates:dev', 'svg', 'images', 'uploads', 'favicons', 'fonts'))
 );
 
 $.gulp.task('dev', $.gulp.series(
@@ -98,7 +103,7 @@ $.gulp.task('dev', $.gulp.series(
 
 $.gulp.task('build:prod', $.gulp.series(
   'clean',
-  $.gulp.parallel('styles:prod', 'scripts:prod', 'templates:prod', 'svg', 'images', 'favicons', 'fonts'))
+  $.gulp.parallel('styles:prod', 'scripts:prod', 'templates:prod', 'svg', 'images', 'uploads', 'favicons', 'fonts'))
 );
 
 $.gulp.task('prod', $.gulp.series(
