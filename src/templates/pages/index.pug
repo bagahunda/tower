@@ -1,23 +1,7 @@
-
-include ../bemto/bemto.pug
-
+extends ../layouts/main
 include ../blocks/header/header
 include ../blocks/footer/footer
 include ../blocks/scripts/scripts
 
--
-  set_bemto_settings({
-    prefix: '',
-    element: '__',
-    modifier: '--'
-  })
-
-doctype html
-html(lang='ru')
-  include ../blocks/head/head
-  body
-    +header()
-    h1 New index
-    +footer()
-    block scripts
-    +scripts(['https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js', 'build.js'])
+block content
+  h1 Hi there

@@ -1,9 +1,1 @@
-(function ($) {
-
-  $('document').ready(function() {
-
-    
-
-  });
-
-})(jQuery);
+console.log('yep')
