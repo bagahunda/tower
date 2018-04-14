@@ -1,9 +1,11 @@
 const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const fs = require('fs')
 const CopyWebPackPlugin = require('copy-webpack-plugin')
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin')
 
 function generateHtmlPlugins (templateDir) {
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir))
@@ -43,20 +45,26 @@ module.exports = {
         }
       },
       {
+        // test: /\.styl$/,
+        // include: path.resolve(__dirname, 'src/assets/styles'),
+        // use: ExtractTextPlugin.extract({
+        //   use:
+        //   [
+        //     'css-loader',
+        //     {
+        //       loader: 'stylus-loader',
+        //       options: {
+        //         sourceMap: true
+        //       }
+        //     }
+        //   ]
+        // })
         test: /\.styl$/,
-        include: path.resolve(__dirname, 'src/assets/styles'),
-        use: ExtractTextPlugin.extract({
-          use:
-          [
-            'css-loader',
-            {
-              loader: 'stylus-loader',
-              options: {
-                sourceMap: true
-              }
-            }
-          ]
-        })
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "stylus-loader"
+        ]
       },
       {
         test: /\.pug$/,
@@ -64,14 +72,27 @@ module.exports = {
           loader: 'pug-loader',
           query: {} // Can be empty
         }
+      },
+      {
+        test: /\.svg$/,
+        include: path.resolve(__dirname, './src/assets/svg'),
+        loader: 'svg-sprite-loader',
+        options: {
+          extract: true
+        }
       }
     ]
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
-    new ExtractTextPlugin({
-      filename: './assets/styles/style.css',
-      allChunks: true
+    // new ExtractTextPlugin({
+    //   filename: './assets/styles/style.css',
+    //   allChunks: true
+    // }),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "./assets/styles/style.css"
     }),
     new CopyWebPackPlugin(
       [
@@ -86,8 +107,13 @@ module.exports = {
         {
           from: './src/assets/favicons',
           to: './'
+        },
+        {
+          from: './src/assets/uploads',
+          to: './assets/uploads'
         }
       ]
-    )
+    ),
+    new SpriteLoaderPlugin()
   ].concat(htmlPlugins)
 }
