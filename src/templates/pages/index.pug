@@ -1,16 +1,6 @@
-
-include ../bemto/bemto.pug
-
 include ../blocks/header/header
 include ../blocks/footer/footer
 include ../blocks/scripts/scripts
-
--
-  set_bemto_settings({
-    prefix: '',
-    element: '__',
-    modifier: '--'
-  })
 
 doctype html
 html(lang='ru')
@@ -20,4 +10,6 @@ html(lang='ru')
     h1 New index
     +footer()
     block scripts
-    +scripts(['https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js', 'build.js'])
+    +scripts(['main.js'])
+
+

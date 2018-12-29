@@ -1,15 +1,13 @@
-include ../mixins/mixins
 include ../blocks/header/header
 include ../blocks/footer/footer
 include ../blocks/scripts/scripts
-
 
 doctype html
 html(lang='ru')
   include ../blocks/head/head
   body
     +header()
-    block content
+    h1 About page
     +footer()
     block scripts
-    +scripts(['https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js', 'build.js'])
+    +scripts(['main.js'])

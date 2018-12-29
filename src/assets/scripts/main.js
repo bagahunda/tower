@@ -1,9 +1,3 @@
-(function ($) {
-
-  $('document').ready(function() {
-
-    
-
-  });
-
-})(jQuery);
+import Header from "../../templates/blocks/header/header";
+Header();
+console.log("hey, im js");

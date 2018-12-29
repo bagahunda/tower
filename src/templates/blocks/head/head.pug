@@ -9,12 +9,12 @@ head
   meta(name='HandheldFriendly' content='True')
   meta(name='google' value='notranslate')
 
-  link(rel='shortcut icon' type='image/png' href='favicon.png')
+  //- link(rel='shortcut icon' type='image/png' href='favicon.png')
 
   meta(name='description' content='')
   meta(name='keywords' content='')
 
   block head
   title= pageTitle || 'Page Title'
-  
-  link(href='assets/styles/main.css?t=' + timestamp rel='stylesheet')
+
+  link(href='../../../src/assets/styles/main.styl' rel='stylesheet')
