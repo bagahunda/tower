@@ -27,7 +27,7 @@
     "cssnano": "^3.8.1",
     "del": "^2.2.0",
     "gulp": "github:gulpjs/gulp#4.0",
-    "gulp-babel": "^6.1.2",
+    "gulp-babel": "^6.1.3",
     "gulp-cheerio": "^1.0.0",
     "gulp-concat": "^2.6.0",
     "gulp-favicons": "^2.2.7",
